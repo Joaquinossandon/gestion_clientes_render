@@ -6,7 +6,10 @@ const pool = new Pool({
   user: envs.DB_USER,
   password: envs.DB_PASSWORD,
   database: envs.DB_NAME,
-  port: envs.DB_PORT
+  port: envs.DB_PORT,
+  ssl: {
+    rejectUnauthorized: false
+  }
 })
 
 module.exports = pool
