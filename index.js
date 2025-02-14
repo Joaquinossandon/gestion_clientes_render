@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const envs = require('./config')
 const pool = require('./connection')
+const cors = require('cors')
+
+app.use(cors())
 
 app.get('/', async (req, res) => {
   const query = 'SELECT * FROM cliente'
