@@ -1,11 +1,17 @@
 const { Pool } = require('pg')
 const envs = require('./config')
 
-const pool = new Pool({
-  connectionString: envs.DB_URL,
-  ssl: {
+const poolOptions = {
+  connectionString: envs.DB_URL
+}
+
+if (envs.ENVIRONMENT === 'production') {
+  poolOptions.ssl = {
     rejectUnauthorized: false
   }
-})
+}
+
+const pool = new Pool(poolOptions)
+
 
 module.exports = pool
